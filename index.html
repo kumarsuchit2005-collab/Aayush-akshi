@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Akshi Choudhary ❤️</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffdeeb;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 85%;
+            z-index: 10;
+            position: relative;
+        }
+
+        .gif-img {
+            width: 100%;
+            max-width: 180px;
+            height: auto;
+            border-radius: 15px;
+            margin-bottom: 10px;
+        }
+
+        h1 { color: #d63384; font-size: 1.5rem; margin-bottom: 10px; }
+        p { color: #555; line-height: 1.5; font-size: 1rem; }
+        
+        .btn-container {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            height: 50px;
+        }
+
+        button {
+            padding: 12px 28px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+
+        #yesBtn { background-color: #ff4d6d; color: white; position: relative; z-index: 10; }
+
+        #noBtn { 
+            background-color: #f0f0f0; 
+            color: #d63384; 
+            position: relative; 
+            transition: all 0.1s ease;
+            z-index: 1000;
+        }
+
+        .hidden { display: none; }
+        .fade-in { animation: fadeIn 0.6s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+
+        .reasons-list { text-align: left; display: inline-block; color: #d63384; margin: 15px 0; font-weight: bold; }
+        .reasons-list div { margin-bottom: 8px; border-bottom: 1px solid #ffeef4; padding-bottom: 5px; }
+    </style>
+</head>
+<body onclick="playMusic()">
+
+    <audio id="valentineMusic" loop>
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="screen1" class="container">
+        <img src="https://media.tenor.com/97yX9YpIDY4AAAAi/milk-and-mocha.gif" class="gif-img">
+        <h1>💖 Will you be my Valentine, Akshi Choudhary? 💖</h1>
+        <p>🌸 Ayush is waiting for your answer... 🌸</p>
+        <div class="btn-container">
+            <button id="yesBtn" onclick="nextScreen(2)">Yes 🌹</button>
+            <button id="noBtn" onmouseover="moveNoButton()" onclick="moveNoButton()">No 😜</button>
+        </div>
+    </div>
+
+    <div id="screen2" class="container hidden fade-in">
+        <img src="https://media.tenor.com/S6pM7D_pU5QAAAAi/cat-love.gif" class="gif-img">
+        <h1>😍 I Knew You'd Say YES 😍</h1>
+        <p>You make my world brighter every single day, Akshi ✨</p>
+        <button id="yesBtn" onclick="nextScreen(3)">Why I Love You? 💕</button>
+    </div>
+
+    <div id="screen3" class="container hidden fade-in">
+        <h1>💕 Why Ayush Loves You 💕</h1>
+        <div class="reasons-list">
+            <div>👀 Your eyes are the prettiest</div>
+            <div>😊 Your smile is just magic</div>
+            <div>🌸 Your kind and simple heart</div>
+            <div>🏡 You are my safe place</div>
+        </div>
+        <p style="color:#d63384; font-size: 0.9rem;"><i>"Thodi si matlabi or advance bhi hogyi h"</i> 😂</p>
+        <button id="yesBtn" onclick="nextScreen(4)">My Promise 💌</button>
+    </div>
+
+    <div id="screen4" class="container hidden fade-in">
+        <img src="https://media.tenor.com/Z_S-uX9k078AAAAi/milk-and-mocha.gif" class="gif-img">
+        <h1>💌 My Valentine Promise 💌</h1>
+        <p style="color:#ff4d6d; font-weight:bold;">I promise to care for you, make you smile, and love you more with every heartbeat ❤️</p>
+        <button id="yesBtn" onclick="nextScreen(5)">Final Surprise 🎁</button>
+    </div>
+
+    <div id="screen5" class="container hidden fade-in">
+        <img src="https://media.tenor.com/MDJ9iMTCG7ItmwTYW2/giphy.gif" class="gif-img">
+        <h1>💐 Happy Valentine's Day 💐</h1>
+        <div style="font-size:24px; margin:15px 0; color:#d63384;">❤️ Akshi & Ayush ❤️</div>
+        <p>You are my today, my tomorrow, and my forever 💞</p>
+        <p style="background: #fff0f5; padding: 10px; border-radius: 10px; font-size: 0.9rem; color: #555;">
+            " y korean webseries dekhni band krde moti " 
+        </p>
+        <p style="font-weight:bold; color:#d63384; margin-top: 15px;">I Love You Always, Akshi! ❤️</p>
+    </div>
+
+    <script>
+        function playMusic() {
+            var audio = document.getElementById("valentineMusic");
+            audio.play().catch(function(e) {});
+        }
+
+        function nextScreen(num) {
+            playMusic();
+            document.querySelectorAll('.container').forEach(c => c.classList.add('hidden'));
+            document.getElementById('screen' + num).classList.remove('hidden');
+            if(num > 1 && document.getElementById('noBtn')) document.getElementById('noBtn').remove();
+        }
+
+        function moveNoButton() {
+            const noBtn = document.getElementById('noBtn');
+            noBtn.style.position = 'absolute'; 
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+        }
+    </script>
+</body>
+</html>
