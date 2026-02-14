@@ -107,7 +107,7 @@
             <div>🏡 You are my safe place</div>
         </div>
         <hr style="margin:10px 0; border:1px solid #ffd6e0;">
-        <p style="color:#555; font-size: 0.9rem;">Every moment with you is a blessing ❤️</p>
+        <p style="color:#555; font-size: 0.9rem;">Every single moment with you is a blessing ❤️</p>
         <button id="yesBtn" onclick="nextScreen(4)">My Promise 💌</button>
     </div>
 
@@ -129,14 +129,20 @@
     <script>
         function playMusic() {
             var audio = document.getElementById("valentineMusic");
-            audio.play().catch(function(e) {});
+            audio.play().catch(function(e) {
+                // Audio might be blocked until first click
+            });
         }
 
         function nextScreen(num) {
             playMusic();
             document.querySelectorAll('.container').forEach(c => c.classList.add('hidden'));
             document.getElementById('screen' + num).classList.remove('hidden');
-            if(num > 1 && document.getElementById('noBtn')) document.getElementById('noBtn').remove();
+            // Hide the No button after Page 1
+            if(num > 1) {
+                const noBtn = document.getElementById('noBtn');
+                if(noBtn) noBtn.style.display = 'none';
+            }
         }
 
         function moveNoButton() {
